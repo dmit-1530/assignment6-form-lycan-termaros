@@ -8,12 +8,220 @@ body {
 }
 
 
+:root {
+    --material-blue: #CB4E0B;
+    --hover: #CB4E0B;
+    --form-bg: #fdf8f8;
+    --black: #121212;
+    --font-family: "Noto Sans Bhaiksuki", sans-serif;
+    --font-legend: clamp(1.2rem, 2vw, 2rem);
+    --border-left: 5px solid var(--material-blue);
+    --border-bottom: 3px solid var(--material-blue);
+    --p-color: #333;
+    --border-form: 1px solid #d9d9d9;
+    --box-shadow: 0px 2px 2px rgba(60, 64, 67, .3);
+    --box-shadow-input: inset 0 1px 2px rgba(60, 64, 67, .15);
+}
+
+
+.inner-header-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.inner-header-container img,
+.inner-header-container div {
+    width: calc ((100% / 2) - (1rem / 2));
+}
+
+body {
+    background-color: var(--form-bg);
+    font-family: var(--font-family);
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1020px;
+    padding: 1rem;
+}
+
 h2 {
-    width: 18rem;
-    padding-top: 3rem;
-    font-size: 1.75rem;
-    font-weight: 700;
-    line-height: 150%;
-    border-left: solid 5px #CB4E0B;
-    border-bottom: solid 2px #CB4E0B;
+    font-size: 2rem;
+    font-weight: bold;
+    border-left: var(--border-left);
+    padding-left: 0.25rem;
+    border-bottom: var(--border-bottom);
+    width: max-content;
+    margin-bottom: 1.5rem;
+}
+
+div {
+    padding-top: 2rem;
+}
+
+legend {
+    font-size: 1rem;
+    color: var(--black);
+    padding-top: 2rem;
+}
+
+p {
+    margin-bottom: 2rem;
+}
+
+section {
+    margin: 3rem 0;
+}
+
+form {
+    background-color: white;
+    padding: 2rem 1rem;
+    line-height: 1.5;
+}
+
+form fieldset div label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #c1c4c8;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: black;
+}
+
+input[type="radio"] {
+    accent-color: var(--hover);
+}
+
+form label:not(input[type="radio"] + label, input[type="checkbox"] + label) {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+form input:not([type="radio"], [type="checkbox"], [type="submit"]),
+select,
+textarea {
+    border: var(--border-form);
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+form input:not([type="radio"], [type="checkbox"], [type="submit"]) {
+    box-shadow: var(--box-shadow-input);
+}
+
+form fieldset:nth-of-type(2) div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+form fieldset:nth-of-type(2) label {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #c1c4c8;
+    cursor: pointer;
+    flex-grow: 1;
+    /* Threshold: if container < 00px, items become 100% wide (stack) */
+    /* If container > 600px, items take their share of the row */
+    flex-basis: calc(37rem - 100%) * 999;
+    /* Constraints to keep items usable after the switch */
+    min-inline-size: min(100%, 10rem);
+    max-inline-size: 100%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+span {
+    margin-right: 1rem;
+}
+
+form textarea {
+    max-height: 16rem;
+    min-height: 12.5rem;
+    resize: vertical;
+}
+
+fieldset>div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.49rem;
+}
+
+fieldset label:has(input[type="radio"]:checked) {
+    background-color: var(--hover);
+    color: #fff;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    color: #666;
+}
+
+input[type="submit"] {
+    background-color: var(--material-blue);
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+    margin: 1rem 0;
+    padding: 1rem;
+    text-transform: uppercase;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--hover);
+    letter-spacing: 2px;
+}
+
+@media (min-width: 900px) {
+    .container {
+        display: flex;
+        gap: 3rem;
+    }
+
+    header {
+        flex: 0 0 30%;
+    }
+
+    form {
+        flex-basis: 0;
+        flex-grow: 999;
+        min-inline-size: 70%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        padding: 0;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1660px) {
+    .container {
+        margin: 0 auto;
+        max-width: 1560px;
+    }
+}
+
+header {
+        container-type: inline-size;
+        container-name: container-name;
+    }
+
+@container container-name (min-width: 43.75rem) {
+    .inner-header-container {
+        display: flex;
+        gap: 1rem;
+    }
 }
